@@ -1,0 +1,20 @@
+<settings>
+    <servers>
+        <server>
+            <id>nexus</id>
+            <username>admin</username>
+            <password>totally-secure</password>
+        </server>
+    </servers>
+    <profiles>
+        <profile>
+            <id>nexus</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <altDeploymentRepository>nexus::default::http://3.112.26.84:8081/repository/maven-nlj/</altDeploymentRepository>
+            </properties>
+        </profile>
+    </profiles>
+</settings>

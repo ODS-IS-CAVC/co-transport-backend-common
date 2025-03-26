@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .info-container {
+            margin: 1.25rem 0;
+        }
+        .info-row {
+            display: flex;
+            margin: 0.3125rem 0;
+        }
+        .label {
+            width: 3.125rem;
+            text-align: left;
+            padding-right: 0.625rem;
+        }
+        .value {
+            flex: 1;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <p>トラックの出発時刻が変更されました。</p>
+    
+    <div class="info-container">
+        <div class="info-row">
+            <div class="label">便名:</div>
+            <div class="value" th:text="${conveyanceNumber}"></div>
+        </div>
+        <div class="info-row">
+            <div class="label">経路:</div>
+            <div class="value" th:text="${route}"></div>
+        </div>
+        <div class="info-row">
+            <div class="label">出発時刻:</div>
+            <div class="value" th:text="${departureTime}"></div>
+        </div>
+    </div>
+
+    <p>詳細については、共同輸送システムの管理画面にログインし、車両の停止情報をご確認ください。</p>
+</body>
+</html>

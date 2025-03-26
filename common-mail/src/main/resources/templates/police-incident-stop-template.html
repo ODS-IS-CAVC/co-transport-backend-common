@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .info-container {
+            margin: 1.25rem 0;
+        }
+        .info-row {
+            display: flex;
+            margin: 0.3125rem 0;
+        }
+        .label {
+            width: 5rem;
+            text-align: left;
+            padding-right: 0.625rem;
+        }
+        .value {
+            flex: 1;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <p>悪天候により輸送トラックが停止しました。</p>
+    
+    <div class="info-container">
+        <div class="info-row">
+            <div class="label">便名:</div>
+            <div class="value" th:text="${conveyanceNumber}"></div>
+        </div>
+        <div class="info-row">
+            <div class="label">経路:</div>
+            <div class="value" th:text="${route}"></div>
+        </div>
+        <div class="info-row">
+            <div class="label">出発時刻:</div>
+            <div class="value" th:text="${departureTime}"></div>
+        </div>
+        <div class="info-row">
+            <div class="label">車両番号:</div>
+            <div class="value" th:text="${vehicleNumber}"></div>
+        </div>
+        <div class="info-row">
+            <div class="label">事象ID:</div>
+            <div class="value" th:text="${incidentId}"></div>
+        </div>
+    </div>
+
+    <p>詳細については、車両情報連携システムにログインし、車両停止の詳細情報をご確認ください。</p>
+</body>
+</html>
