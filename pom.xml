@@ -186,18 +186,9 @@
             <name>Spring Snapshots</name>
             <url>https://repo.spring.io/snapshot</url>
         </repository>
-        <repository>
-            <id>nexus</id>
-            <name>Maven Selfhost Lib</name>
-            <url>http://3.112.26.84:8081/repository/maven-nlj/</url>
-        </repository>
     </repositories>
 
     <distributionManagement>
-    <repository>
-        <id>nexus</id>
-        <url>http://3.112.26.84:8081/repository/maven-nlj/</url>
-    </repository>
     <!-- <snapshotRepository>
         <id>nexus-snapshots</id>
         <url>http://<nexus-server-url>/repository/maven-snapshots/</url>
