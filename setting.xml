@@ -11,10 +11,7 @@
             <id>nexus</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <altDeploymentRepository>nexus::default::http://3.112.26.84:8081/repository/maven-nlj/</altDeploymentRepository>
-            </properties>
+            </activation>           
         </profile>
     </profiles>
 </settings>
