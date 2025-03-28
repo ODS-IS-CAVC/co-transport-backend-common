@@ -125,7 +125,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*")); // Thay đổi theo nhu cầu
+        configuration.setAllowedOrigins(List.of("*")); 
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of("Authorization", "Link", "X-Total-Count", "X-nlj-auth-alert", "X-nlj-auth-error", "X-nlj-auth-params"));

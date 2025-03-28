@@ -190,7 +190,7 @@ public class NextWebUtil {
 
     public static String decryptRefreshToken(String refreshToken, String publicKeyBase64){
 
-        // Phân tích JWT và lấy Claims
+        // JWTからClaimsを取得
         try {
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(publicKeyBase64)
@@ -206,14 +206,14 @@ public class NextWebUtil {
 
     public static SystemLogin decrypt(String jwt, String publicKeyBase64) {
         try {
-            // Phân tích JWT và lấy Claims
+            // JWTからClaimsを取得
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(publicKeyBase64)
                     .build()
                     .parseClaimsJws(jwt)
                     .getBody();
 
-            // Chuyển đổi Claims thành đối tượng SystemLogin
+            // ClaimsをSystemLoginオブジェクトに変換
             String json = claims.getSubject();
             return mapper.readValue(json, SystemLogin.class);
         } catch (Exception e) {
@@ -223,13 +223,13 @@ public class NextWebUtil {
     }
 
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    private static final int LENGTH = 20; // Độ dài của SECRET_KEY
+    private static final int LENGTH = 20; // SECRET_KEYの長さ
 
     public static String generateUniqueString(String domain) {
-        // Hash domain để có chuỗi cố định
+        // Hash domainを固定文字列に変換
         String hash = hashDomain(domain);
 
-        // Chọn 10 ký tự đầu tiên từ hash và chuyển đổi thành chuỗi unique
+        // Hashから最初の10文字を選択し、一意の文字列に変換
         return convertHashToUniqueString(hash);
     }
 
@@ -279,7 +279,7 @@ public class NextWebUtil {
                 break;
             }
         }
-        // Nếu không đủ 10 ký tự từ hash, bổ sung bằng ký tự từ CHARSET
+        // 10文字未満の場合、CHARSETからランダムに文字を追加
         while (uniqueString.length() < LENGTH) {
             int index = (int) (Math.random() * CHARACTERS.length());
             uniqueString.append(CHARACTERS.charAt(index));
@@ -291,7 +291,7 @@ public class NextWebUtil {
         try {
             URI uri = new URI(url);
             String host = uri.getHost();
-            // Loại bỏ 'www.' nếu có
+            // 'www.'が存在する場合、削除
             if (host != null && host.startsWith("www.")) {
                 host = host.substring(4);
             }
@@ -302,19 +302,19 @@ public class NextWebUtil {
     }
 
     public static PublicKey getPublicKey(String publicKeyPEM) throws Exception {
-        // Loại bỏ các phần không cần thiết của chuỗi PEM
+        // PEM文字列から不要な部分を削除
         String publicKeyContent = publicKeyPEM.replace("-----BEGIN PUBLIC KEY-----", "")
                 .replace("-----END PUBLIC KEY-----", "")
                 .replaceAll("\\s+", "");
 
-        // Chuyển đổi chuỗi Base64 thành byte array
+        // Base64文字列をbyte配列に変換
         byte[] decoded = Base64.getDecoder().decode(publicKeyContent);
 
-        // Tạo đối tượng KeyFactory cho RSA
+        // RSAのKeyFactoryオブジェクトを作成
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(decoded);
 
-        // Tạo đối tượng PublicKey
+        // RSAのPublicKeyオブジェクトを作成
         return keyFactory.generatePublic(keySpec);
     }
 

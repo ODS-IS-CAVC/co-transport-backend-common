@@ -160,18 +160,18 @@ public class BaseUtil {
 
     public static String dateToString(Instant instant){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-                .withZone(ZoneId.systemDefault()); // Đặt múi giờ là UTC
+                .withZone(ZoneId.systemDefault()); // UTCに設定
 
         return formatter.format(instant);
     }
 
-    // Function to generate a random password of given length
+    // 指定された長さのランダムパスワードを生成する関数
     public static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
     public static String generatePassword(int length) {
         StringBuilder password = new StringBuilder(length);
         SecureRandom random = new SecureRandom();
 
-        // Generate password of desired length
+        // 指定された長さのパスワードを生成
         for (int i = 0; i < length; i++) {
             int randomIndex = random.nextInt(CHARACTERS.length());
             password.append(CHARACTERS.charAt(randomIndex));
